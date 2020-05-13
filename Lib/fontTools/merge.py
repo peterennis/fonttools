@@ -2,9 +2,6 @@
 #
 # Google Author(s): Behdad Esfahbod, Roozbeh Pournader
 
-"""Font merger.
-"""
-
 from fontTools.misc.py23 import *
 from fontTools.misc.timeTools import timestampNow
 from fontTools import ttLib, cffLib
@@ -974,7 +971,7 @@ class Merger(object):
 			self._preMerge(font)
 
 		self.fonts = fonts
-		self.duplicateGlyphsPerFont = [{} for f in fonts]
+		self.duplicateGlyphsPerFont = [{} for _ in fonts]
 
 		allTags = reduce(set.union, (list(font.keys()) for font in fonts), set())
 		allTags.remove('GlyphOrder')
@@ -1136,6 +1133,7 @@ __all__ = [
 
 @timer("make one with everything (TOTAL TIME)")
 def main(args=None):
+	"""Merge multiple fonts into one"""
 	from fontTools import configLogger
 
 	if args is None:

@@ -1007,10 +1007,11 @@ class MasterFinder(object):
 
 
 def main(args=None):
+	"""Build a variable font from a designspace file and masters"""
 	from argparse import ArgumentParser
 	from fontTools import configLogger
 
-	parser = ArgumentParser(prog='varLib')
+	parser = ArgumentParser(prog='varLib', description = main.__doc__)
 	parser.add_argument('designspace')
 	parser.add_argument(
 		'-o',
